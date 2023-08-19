@@ -1,0 +1,34 @@
+﻿@model List<personModel>
+
+<table>
+    <tr>
+        <td>National ID: </td>
+        <td>Full Name: </td>
+        <td>Surname: </td>
+        <td>Age:</td>
+        <td>Gender: </td>
+        <td>Location: </td>
+        <td>Phone Number: </td>
+        <td>Email: </td>
+        <td>Occupation: </td>
+        <td>Job Title: </td>
+        <td>Year in College: </td>
+
+    </tr>
+    @foreach (var person in Model)
+    {
+        <tr>
+            <td>@person.NationalId</td>
+            <td>@person.FirstName @person.SecondName @person.ThirdName @person.LastName</td>
+            <td>@person.Surname</td>
+            <td>@person.Age</td>
+            <td>@person.Gender</td>
+            <td>@person.Location</td>
+            <td>@person.PhoneNumber</td>
+            <td>@person.Email</td>
+            <td>@person.Occupation</td>
+            <td>@person.JobTitle</td>
+            <td>@person.YearInCollege</td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,162 @@
+﻿<html>
+<head>
+    @model personModel
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <style>
+
+        button {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 3%;
+            background-color: #f5f5f5;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .textbox-row {
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 10px;
+        }
+
+        .textbox-container {
+            flex: 1;
+            text-align: center;
+            margin: 3px;
+        }
+
+            .textbox-container label {
+                display: block;
+                margin-bottom: 5px;
+                text-align: left; /* Align labels to the left */
+            }
+
+            .textbox-container input[type="text"] {
+                padding: 10px;
+                width: 100%;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+        By adding text-align: left; to the .textbox-container label styles, the labels will be aligned to the left. The text boxes will still remain centered within their respective containers.
+
+        This updated CSS will result in labels aligned to the left and text boxes centered within the layout.
+    </style>
+
+</head>
+<body>
+    <h2 class="text-center">طلب الانتساب</h2>
+    <div class="shadow">
+
+        @using (Html.BeginForm("signupForm", "Home", FormMethod.Post))
+        {
+            <div class="textbox-row">
+
+                <div class="textbox-container">
+                    @Html.Label("firstName", "First Name:")
+                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "Ahmad Mohsen", required = "required" })
+                </div>
+
+                <div class="textbox-container">
+                    @Html.Label("secondName", "Second Name:")
+                    @Html.TextBoxFor(m => m.SecondName, new { @class = "form-control", placeholder = "Ahmad Mohsen", required = "required" })
+
+
+                </div>
+
+                <div class="textbox-container">
+                    @Html.Label("thirdName", "Third Name:")
+                    @Html.TextBoxFor(m => m.ThirdName, new { @class = "form-control", placeholder = "Ahmad Mohsen", required = "required" })
+                </div>
+
+
+                <div class="textbox-container">
+                    @Html.Label("lastName", "Last Name:")
+                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Ahmad Mohsen", required = "required" })
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                @Html.Label("lastname", "Origin:")
+                @Html.TextBoxFor(m => m.Surname, new { @class = "form-control", placeholder = "Bdoor", required = "required" })
+
+            </div>
+
+            <div class="form-group">
+                @Html.Label("dob", "Date of Birth:")
+                @Html.TextBoxFor(m => m.Age, new { @class = "form-control", type = "date", required = "required" })
+
+            </div>
+
+            <div class="form-group">
+                @Html.Label("email", "Email:")
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Example@gmail.com", required = "required", type = "email" })
+
+            </div>
+
+            <div class="form-group">
+                @Html.Label("nationalId", "National ID:")
+                @Html.TextBoxFor(m => m.NationalId, new { @class = "form-control", placeholder = "Enter your National ID", required = "required" })
+
+            </div>
+
+            <div class="form-group">
+                @Html.Label("gender", "Gender:")
+                @Html.DropDownListFor(m => m.Gender, new SelectList(new[] { "male", "female", "other" }), "Select Gender", new { @class = "form-control custom-select", required = "required" })
+
+            </div>
+
+            <div class="form-group">
+                @Html.Label("originCity", "City of Origin:")
+                @Html.DropDownListFor(m => m.Location, new SelectList(new[] { "معان", "شوبك", "مادبا", "الطفيلة", "اربد" }), "Select City", new { @class = "form-control custom-select", required = "required" })
+
+            </div>
+
+            <div class="form-group">
+                @Html.Label("occupation", "Occupation:")
+                @Html.DropDownListFor(m => m.Occupation, new SelectList(new[] { "student", "employee", "self-employed", "unemployed" }), "Select Occupation", new { @class = "form-control custom-select", required = "required" })
+
+            </div>
+
+            <div class="form-group">
+                @Html.Label("yearInCollege", "Year in College:")
+                @Html.TextBoxFor(m => m.YearInCollege, new { @class = "form-control", placeholder = "*Fill only if Student" })
+
+            </div>
+
+            <div class="form-group">
+                @Html.Label("jobTitle", "Job Title:")
+                @Html.TextBoxFor(m => m.JobTitle, new { @class = "form-control", placeholder = "E.g. Engineer" })
+            </div>
+
+
+            <div class="form-group">
+                @Html.Label("phoneNumber", "Phone Number:")
+                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", placeholder = "009627XXXXXXXX", required = "required", type = "tel" })
+            </div>
+
+
+            <button type="submit" class="btn btn-primary mt-5">Submit</button>
+        }
+    </div>
+</body>
+</html>
